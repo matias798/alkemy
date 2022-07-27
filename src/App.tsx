@@ -1,12 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Home from './pages/Home';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+// Styles
+import "./Styles/App.scss";
+
+// Components
+import Home from "./pages/Home";
+import NewActivity  from "./pages/NewActivity";
+
+// import react router dom
 
 function App() {
   return (
     <>
-     <Home />
+      <Router>
+        <Routes>
+          <Route path="/dashboard" element={<Home />} />
+          <Route path="/dashboard/new-activity" element={<NewActivity />} />
+        </Routes>
+      </Router>
     </>
   );
 }
