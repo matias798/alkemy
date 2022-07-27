@@ -1,0 +1,91 @@
+// Colors
+$red: #ff6173;
+$blue: #2a2858;
+$gray: #9191af;
+$light-blue: #70e5da;
+$white: #fbfbfb;
+$background: #f4f4f4;
+
+// import Local Fonts
+@font-face {
+  font-family: "Circular-Std-Book";
+  src: url("./fonts/Circular-Std-Book.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Circular-Std-Bold";
+  src: url("./fonts/CircularStd-Bold.ttf") format("truetype");
+}
+
+body {
+  font-family: "Circular-Std-Book" !important;
+  background-color: $background !important;
+}
+
+h2,
+h3,
+h4 {
+  font-family: "Circular-Std-Bold" !important;
+}
+
+.card {
+  background-color: $white !important;
+}
+
+.primary-text {
+  color: $blue;
+}
+
+.secondary-text {
+  color: $gray;
+}
+
+.danger-text {
+  color: $red;
+}
+
+.success-text {
+  color: $light-blue;
+}
+
+// buttons
+.primary-btn {
+  background-color: $blue !important;
+  border: $blue !important;
+  color: $white !important;
+}
+
+// balance & activity container
+.BalanceActivityContainer {
+  width: 55%;
+  margin-top: 2em !important;
+  margin: 5px;
+}
+
+// recent activity
+.RecentActivityContainer {
+  width: 35%;
+  margin-top: 2em !important;
+  margin: 5px;
+}
+
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $light-blue;
+  color: $white;
+  padding: 1rem;
+  margin-right: 0.7em;
+  border-radius: 50%;
+}
+
+.balanceChange {
+  margin-left: 45%;
+}
+
+// Total balance
+.totalBalanceContainer {
+  width: 100%;
+  height: 20%;
+}
