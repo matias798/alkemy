@@ -25,7 +25,7 @@ export default activitySlice.reducer;
 
 export const fetchActivities = () => (dispatch: any) => {
   axios
-    .get("http://localhost:3000/activities")
+    .get("http://localhost:5000/activities")
     .then((res) => {
       dispatch(setActivities(res.data));
     })
@@ -33,3 +33,4 @@ export const fetchActivities = () => (dispatch: any) => {
       dispatch(setError(err));
     });
 };
+
