@@ -3,13 +3,17 @@ import React from "react";
 import { Button, Card } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 // icons
-import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+// import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 // interfaces
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
+
+// components and functions
+import { fetchActivities } from "./../store/slices/activity/index";
 
 interface Activity {
   id: number;
@@ -20,57 +24,17 @@ interface Activity {
 }
 
 const RecentActivity: React.FC = () => {
-  const Activity: Activity[] = [
-    {
-      id: 1,
-      logo: faCoffee,
-      title: "faCoffee",
-      date: "2020-01-01",
-      balanceChange: -100,
-    },
-    {
-      id: 2,
-      logo: faCoffee,
-      title: "faCoffee",
-      date: "2022-01-01",
-      balanceChange: 140,
-    },
-    {
-      id: 3,
-      logo: faCoffee,
-      title: "faCoffee",
-      date: "2024-01-01",
-      balanceChange: -100,
-    },
-    {
-      id: 4,
-      logo: faCoffee,
-      title: "faCoffee",
-      date: "2026-01-01",
-      balanceChange: 140,
-    },
-    {
-      id: 5,
-      logo: faCoffee,
-      title: "faCoffee",
-      date: "2028-01-01",
-      balanceChange: -100,
-    },
-    {
-      id: 6,
-      logo: faCoffee,
-      title: "faCoffee",
-      date: "2030-01-01",
-      balanceChange: 140,
-    },
-    {
-      id: 7,
-      logo: faCoffee,
-      title: "faCoffee",
-      date: "2032-01-01",
-      balanceChange: -100,
-    },
-  ];
+  const dispatch: any = useDispatch();
+
+  const activities: Activity[] = useSelector((state: any) => state.activity);
+
+  React.useEffect(() => {
+    console.log("RecentActivity");
+
+    dispatch(fetchActivities());
+  }, [dispatch]);
+
+  // const Activity: Activity[] ;
 
   return (
     <div className="RecentActivityContainer ">
