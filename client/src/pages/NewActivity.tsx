@@ -2,13 +2,25 @@ import React from "react";
 // import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { Form, Button } from "react-bootstrap";
 
+
+interface Activity {
+  id: number;
+  logo: any;
+  title: string;
+  date: string;
+  balanceChange: number;
+}
+
+
 const NewActivity: React.FC = () => {
   const [Title, setTitle] = React.useState<string>("");
   const [Date, setDate] = React.useState<string>("");
   const [Logo, setLogo] = React.useState<any>();
-  const [BalanceChange, setBalanceChange] = React.useState<number>(0);
+  const [BalanceChange, setBalanceChange] = React.useState<number>();
+  const [activity, setActivity] = React.useState<Activity>();
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    
     setTitle(event.target.value);
   };
 
@@ -21,8 +33,14 @@ const NewActivity: React.FC = () => {
   };
 
   const handleBalanceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (typeof event.target.value === "string") {
+    if (event.target.value === "" || event.target.value === undefined) {
       return;
+    }
+
+    if (typeof event.target.value === "string") {
+      // string to number
+      const num = parseInt(event.target.value);
+      return setBalanceChange(num);
     }
 
     setBalanceChange(event.target.value);
@@ -47,7 +65,6 @@ const NewActivity: React.FC = () => {
           <Form.Control
             type="text"
             placeholder="Enter Title"
-            value={Title}
             onChange={handleTitleChange}
           />
         </Form.Group>
@@ -56,7 +73,6 @@ const NewActivity: React.FC = () => {
           <Form.Control
             type="date"
             placeholder="Enter Date"
-            value={Date}
             onChange={handleDateChange}
           />
         </Form.Group>
@@ -65,7 +81,6 @@ const NewActivity: React.FC = () => {
           <Form.Control
             type="text"
             placeholder="Enter Logo"
-            value={Logo}
             onChange={handleLogoChange}
           />
         </Form.Group>
@@ -74,7 +89,6 @@ const NewActivity: React.FC = () => {
           <Form.Control
             type="number"
             placeholder="Enter Balance Change"
-            value={BalanceChange}
             onChange={handleBalanceChange}
           />
         </Form.Group>
